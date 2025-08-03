@@ -10,6 +10,16 @@ class BookingService
     }
 
     /**
+     * Retrive bookings from database of a user. 
+     */
+    public function bookings($user)
+    {
+        $bookings = $user->bookings()->paginate(10);
+
+        return $bookings;
+    }
+
+    /**
      * Store a booking of a user. 
      */
     public function bookingService($authUser, $bookingData)
