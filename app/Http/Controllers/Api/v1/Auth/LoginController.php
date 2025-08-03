@@ -45,7 +45,7 @@ class LoginController extends Controller
                 return ApiResponse::error($e->getMessage(), $e->getCode());
             }
 
-            Log::error([$e->getMessage(), $e->getLine()]);
+            Log::error("Error: {$e->getMessage()} on line {$e->getLine()} in {$e->getFile()}");
             return ApiResponse::error('Login failed', 500);
         }
     }

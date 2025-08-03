@@ -39,7 +39,7 @@ class BookingController extends Controller
 
             return ApiResponse::success('No bookings found.', [], 200);
         } catch (Exception $e) {
-            Log::error([$e->getMessage(), $e->getLine()]);
+            Log::error("Error: {$e->getMessage()} on line {$e->getLine()} in {$e->getFile()}");
             return ApiResponse::error('Something went wrong. Please try again.', 500);
         }
     }
@@ -62,7 +62,7 @@ class BookingController extends Controller
 
             return ApiResponse::success('Booking Successfull', new BookingResource($booking), 201);
         } catch (Exception $e) {
-            Log::error([$e->getMessage(), $e->getLine()]);
+            Log::error("Error: {$e->getMessage()} on line {$e->getLine()} in {$e->getFile()}");
             return ApiResponse::error('Booking failed', 500);
         }
     }
